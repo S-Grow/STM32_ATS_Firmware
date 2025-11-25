@@ -104,3 +104,16 @@ int display_voltage(float voltage)
     // Send buffer to display
     return HAL_I2C_Master_Transmit(&hi2c1, DISPLAY_ADDR, buffer, 16, HAL_MAX_DELAY);
 }
+
+void test_display(void)
+{
+    uint8_t buffer[16];
+
+    // Set all segments on
+    for (int i = 0; i < 16; i++)
+    {
+        buffer[i] = 0xFF; // all bits 1 = all segments on
+    }
+
+    HAL_I2C_Master_Transmit(&hi2c1, DISPLAY_ADDR, buffer, 16, HAL_MAX_DELAY);
+}

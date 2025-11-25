@@ -74,7 +74,15 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  HAL_Init();
+    __HAL_RCC_GPIOA_CLK_ENABLE();
 
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitStruct.Pin = GPIO_PIN_5;        // LD2 pin
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -110,9 +118,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    /*test_display();   // light all segments
+    HAL_Delay(2000);  // keep on for 2 seconds
+
     float v_rms = voltage_monitor_read_rms();  // read AC RMS voltage
     display_voltage(v_rms);                      // update the display
-    HAL_Delay(250);                            // 4 updates per second
+    HAL_Delay(250);                            // 4 updates per second */
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // toggle LED
+    HAL_Delay(1000);                          // 1s delay
   }
   /* USER CODE END 3 */
 }

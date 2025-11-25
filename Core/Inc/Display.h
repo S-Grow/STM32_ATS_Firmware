@@ -5,5 +5,6 @@
 int init_display(void);
 int display_voltage(float voltage);
 int shutdown_display(void);
+void test_display(void);
 
 #endif
