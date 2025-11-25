@@ -1,124 +1,57 @@
-// Voltage Monitoring 
-// MCU: STM32C031K6T6
-// Sensor: ZMPT101B (with adjustable potentiometer)
+// Voltage Monitoring Demo
+// MCU: STM32 Nucleo-L476RG
+// Sensor: ZMPT101B
 // Author: Spencer Grow
 
-#include <stdio.h>
-#include <math.h>
 #include "stm32l4xx_hal.h"
-#include "generator.h"
-#include "Display.h"
+#include "Display.h"   // 7-segment display functions
 
-// Voltage thresholds
-float low_voltage  = 86.0f;     // Minimum acceptable AC voltage (RMS)
-float high_voltage = 128.0f;    // Maximum acceptable AC voltage (RMS)
+// ADC handle
+ADC_HandleTypeDef hadc1;
 
-// GPIO Port
-#define RELAY_PORT GPIOA
-
-// Relay Pins
-#define MAIN_SSR_PIN       GPIO_PIN_1
-#define BACKUP_SSR_PIN     GPIO_PIN_2
-#define SPDT_PIN           GPIO_PIN_6
-
-// LED indicator pins (GEN steps)
-#define CHOKE_LED_PIN      GPIO_PIN_3
-#define START_LED_PIN      GPIO_PIN_4
-#define RUN_LED_PIN        GPIO_PIN_5
-
-// Delay before switching SPDT after SSR changes
-#define SAFETY_DELAY_MS 300
+// Thresholds (not used in demo)
+float low_voltage  = 86.0f;
+float high_voltage = 128.0f;
 
 // Function prototypes
-ADC_HandleTypeDef hadc1;
 float Read_Voltage_RMS(void);
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_ADC1_Init(void);
 
-typedef enum {
-    SOURCE_MAIN,
-    SOURCE_BACKUP
-} PowerSource;
+// Empty generator stubs for demo
+void generator_startup_sequence(void) {}
+void generator_stop(void) {}
 
-PowerSource current_source = SOURCE_MAIN;  // Assume main AC on startup
-
-void SystemClock_Config(void);  // Provided by CubeIDE autocode
-void MX_GPIO_Init(void);
-void MX_ADC1_Init(void);
-
-
-//MAIN PROGRAM
 int main(void)
 {
-    HAL_Init();
-    SystemClock_Config();
-    MX_GPIO_Init();
-    MX_ADC1_Init();
-    display_init();              // Initialize 7-segment Display
+    HAL_Init();                 // Initialize HAL
+    SystemClock_Config();       // Configure system clock
+    MX_GPIO_Init();             // Initialize GPIO (ADC pin)
+    MX_ADC1_Init();             // Initialize ADC
+    display_init();             // Initialize 7-segment display
 
     while (1)
     {
-        // Read RMS voltage
+        // Read RMS voltage from ZMPT101B
         float voltage = Read_Voltage_RMS();
 
         // Update 7-segment display
         display_voltage(voltage);
 
-        // NORMAL GRID OK 
-        if (voltage >= low_voltage && voltage <= high_voltage)
-        {
-            if (current_source != SOURCE_MAIN)
-            {
-                // Turn off backup SSR
-                HAL_GPIO_WritePin(RELAY_PORT, BACKUP_SSR_PIN, GPIO_PIN_RESET);
+        // Also print to console via UART if needed
+        printf("Voltage RMS: %.1f V\r\n", voltage);
 
-                // Stop generator sequence
-                generator_stop();
-
-                HAL_Delay(SAFETY_DELAY_MS);
-
-                // Switch SPDT to MAIN
-                HAL_GPIO_WritePin(RELAY_PORT, SPDT_PIN, GPIO_PIN_RESET);
-
-                // Enable main SSR
-                HAL_GPIO_WritePin(RELAY_PORT, MAIN_SSR_PIN, GPIO_PIN_SET);
-
-                current_source = SOURCE_MAIN;
-            }
-        }
-
-        // GRID OUT OF RANGE
-        else
-        {
-            if (current_source != SOURCE_BACKUP)
-            {
-                // Turn off main SSR
-                HAL_GPIO_WritePin(RELAY_PORT, MAIN_SSR_PIN, GPIO_PIN_RESET);
-
-                // Start generator sequence
-                generator_startup_sequence();
-
-                HAL_Delay(SAFETY_DELAY_MS);
-
-                // Switch SPDT to BACKUP
-                HAL_GPIO_WritePin(RELAY_PORT, SPDT_PIN, GPIO_PIN_SET);
-
-                // Turn on backup SSR
-                HAL_GPIO_WritePin(RELAY_PORT, BACKUP_SSR_PIN, GPIO_PIN_SET);
-
-                current_source = SOURCE_BACKUP;
-            }
-        }
-
-        HAL_Delay(200); // main loop delay
+        HAL_Delay(500);  // 0.5s delay between readings
     }
 }
 
-
-// RMS Voltage Measurement
+// Compute RMS voltage from ADC samples
 float Read_Voltage_RMS(void)
 {
     const uint16_t samples = 200;
-    const float ADC_MID = 2048.0f;  // 12-bit midpoint
-    float sum_sq = 0.0f;
+    const float ADC_MID = 2048.0f; // 12-bit ADC midpoint for single-ended input
+    uint32_t sum_sq = 0;
 
     for (uint16_t i = 0; i < samples; i++)
     {
@@ -127,72 +60,87 @@ float Read_Voltage_RMS(void)
         uint16_t adc_val = HAL_ADC_GetValue(&hadc1);
         HAL_ADC_Stop(&hadc1);
 
-        float centered = (float)adc_val - ADC_MID;  // remove DC bias
+        float centered = (float)adc_val - ADC_MID;  // Remove DC offset
         sum_sq += centered * centered;
     }
 
-    float adc_rms = sqrtf(sum_sq / samples);
+    float adc_rms = sqrtf((float)sum_sq / samples);
 
-    // Convert ADC RMS → Volts RMS (TEMP FACTOR)
-    float sensor_voltage = (adc_rms * 3.3f) / 4096.0f;
-
-    // ZMPT101B calibration multiplier — adjusted via board potentiometer later
-    float voltage_rms = sensor_voltage * 100.0f;
+    // Convert ADC units to voltage
+    float sensor_voltage = (adc_rms / ADC_MID) * 1.65f;  // 3.3V ref
+    float voltage_rms = sensor_voltage * 100.0f;         // Calibration factor
 
     return voltage_rms;
 }
 
-
-// GPIO Initialization
+// GPIO init for ADC pin only
 void MX_GPIO_Init(void)
 {
     __HAL_RCC_GPIOA_CLK_ENABLE();
 
     GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-    // ADC pin (PA0)
-    GPIO_InitStruct.Pin = GPIO_PIN_0;
+    GPIO_InitStruct.Pin = GPIO_PIN_5;      // ADC input pin PA5 (IN5)
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-    GPIO_InitStruct.Pull  = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    // Output pins: SSRs + SPDT + LED indicators
-    GPIO_InitStruct.Pin =
-          MAIN_SSR_PIN
-        | BACKUP_SSR_PIN
-        | SPDT_PIN
-        | CHOKE_LED_PIN
-        | START_LED_PIN
-        | RUN_LED_PIN;
-
-    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull  = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
-
-// ADC Initialization
+// ADC1 init
 void MX_ADC1_Init(void)
 {
     __HAL_RCC_ADC1_CLK_ENABLE();
+    ADC_ChannelConfTypeDef sConfig = {0};
 
     hadc1.Instance = ADC1;
-    hadc1.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV4;
-    hadc1.Init.Resolution            = ADC_RESOLUTION_12B;
-    hadc1.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
-    hadc1.Init.ScanConvMode          = ADC_SCAN_DISABLE;
-    hadc1.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;
-    hadc1.Init.ContinuousConvMode    = DISABLE;
-    hadc1.Init.NbrOfConversion       = 1;
-    hadc1.Init.ExternalTrigConv      = ADC_SOFTWARE_START;
-
+    hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+    hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+    hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
+    hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+    hadc1.Init.ContinuousConvMode = DISABLE;
+    hadc1.Init.NbrOfConversion = 1;
+    hadc1.Init.DiscontinuousConvMode = DISABLE;
+    hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+    hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    hadc1.Init.DMAContinuousRequests = DISABLE;
+    hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+    hadc1.Init.OversamplingMode = DISABLE;
     HAL_ADC_Init(&hadc1);
 
-    ADC_ChannelConfTypeDef sConfig = {0};
-    sConfig.Channel      = ADC_CHANNEL_0;   // PA0
-    sConfig.Rank         = ADC_REGULAR_RANK_1;
-    sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
-
+    sConfig.Channel = ADC_CHANNEL_5;   // PA5
+    sConfig.Rank = ADC_REGULAR_RANK_1;
+    sConfig.SamplingTime = ADC_SAMPLETIME_12CYCLES_5;
+    sConfig.SingleDiff = ADC_SINGLE_ENDED;
+    sConfig.OffsetNumber = ADC_OFFSET_NONE;
+    sConfig.Offset = 0;
     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 }
+
+// System clock (CubeMX generated)
+void SystemClock_Config(void)
+{
+    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+    __HAL_RCC_PWR_CLK_ENABLE();
+    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+    RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+    RCC_OscInitStruct.PLL.PLLM = 1;
+    RCC_OscInitStruct.PLL.PLLN = 10;
+    RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+    RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+    RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+    HAL_RCC_OscConfig(&RCC_OscInitStruct);
+
+    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                                |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_
