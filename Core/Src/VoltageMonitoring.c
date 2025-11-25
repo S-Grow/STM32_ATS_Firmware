@@ -3,7 +3,10 @@
 // Sensor: ZMPT101B
 // Author: Spencer Grow
 
+#include <stdio.h>
+#include <math.h>
 #include "stm32l4xx_hal.h"
+#include "main.h"
 #include "Display.h"   // 7-segment display functions
 
 // ADC handle
@@ -88,7 +91,7 @@ void MX_GPIO_Init(void)
 // ADC1 init
 void MX_ADC1_Init(void)
 {
-    __HAL_RCC_ADC1_CLK_ENABLE();
+    
     ADC_ChannelConfTypeDef sConfig = {0};
 
     hadc1.Instance = ADC1;
@@ -143,4 +146,5 @@ void SystemClock_Config(void)
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_
+    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4);
+}

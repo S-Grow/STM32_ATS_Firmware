@@ -4,6 +4,7 @@
 // display.c - STM32 HT16K33 4-digit 7-segment display
 
 #include "stm32l4xx_hal.h"
+#include "stm32l4xx_hal_i2c.h"
 #include "display.h"
 
 // I2C handle (configured in CubeIDE)
