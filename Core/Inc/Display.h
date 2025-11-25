@@ -2,7 +2,7 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-int display_init(void);
+int init_display(void);
 int display_voltage(float voltage);
 int shutdown_display(void);
 

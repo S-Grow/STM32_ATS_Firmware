@@ -5,7 +5,7 @@
 
 #include "stm32l4xx_hal.h"
 #include "stm32l4xx_hal_i2c.h"
-#include "display.h"
+#include "Display.h"
 
 // I2C handle (configured in CubeIDE)
 extern I2C_HandleTypeDef hi2c1;
@@ -69,7 +69,7 @@ int shutdown_display(void)
 }
 
 //Write RMS voltage to display
-int write_display(float voltage)
+int display_voltage(float voltage)
 {
     // Clear buffer
     for(int i=0;i<16;i++) buffer[i] = 0;

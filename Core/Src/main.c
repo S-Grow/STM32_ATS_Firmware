@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "VoltageMonitoring.h"
+#include "Display.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +99,8 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
+  init_display();                 // initialize HT16K33
+  voltage_monitor_init(&hadc1);   // pass ADC handle to monitoring system
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,6 +110,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    float v_rms = voltage_monitor_read_rms();  // read AC RMS voltage
+    display_voltage(v_rms);                      // update the display
+    HAL_Delay(250);                            // 4 updates per second
   }
   /* USER CODE END 3 */
 }

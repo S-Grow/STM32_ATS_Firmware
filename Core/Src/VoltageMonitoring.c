@@ -32,7 +32,7 @@ int main(void)
     SystemClock_Config();       // Configure system clock
     MX_GPIO_Init();             // Initialize GPIO (ADC pin)
     MX_ADC1_Init();             // Initialize ADC
-    display_init();             // Initialize 7-segment display
+    init_display();             // Initialize 7-segment display
 
     while (1)
     {
