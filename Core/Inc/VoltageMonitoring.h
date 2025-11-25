@@ -10,3 +10,4 @@ void voltage_monitor_init(ADC_HandleTypeDef *hadc);
 float voltage_monitor_read_rms(void);
 
 #endif // VOLTAGE_MONITOR_H
+
