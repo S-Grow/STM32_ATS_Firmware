@@ -31,6 +31,15 @@ Section Cross References
     voltagemonitoring.o(.text.voltage_monitor_read_rms) refers to main.o(.bss.hadc1) for hadc1
     voltagemonitoring.o(.text.voltage_monitor_read_rms) refers to sqrtf.o(i.__hardfp_sqrtf) for __hardfp_sqrtf
     voltagemonitoring.o(.ARM.exidx.text.voltage_monitor_read_rms) refers to voltagemonitoring.o(.text.voltage_monitor_read_rms) for [Anonymous Symbol]
+    startup_stm32l476xx.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_stm32l476xx.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_stm32l476xx.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_stm32l476xx.o(RESET) refers to startup_stm32l476xx.o(STACK) for __initial_sp
+    startup_stm32l476xx.o(RESET) refers to startup_stm32l476xx.o(.text) for Reset_Handler
+    startup_stm32l476xx.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_stm32l476xx.o(.text) refers to __main.o(!!!main) for __main
+    startup_stm32l476xx.o(.text) refers to startup_stm32l476xx.o(HEAP) for Heap_Mem
+    startup_stm32l476xx.o(.text) refers to startup_stm32l476xx.o(STACK) for Stack_Mem
     __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     sqrtf.o(i.__hardfp_sqrtf) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     sqrtf.o(i.__hardfp_sqrtf) refers to _rserrno.o(.text) for __set_errno
@@ -61,7 +70,7 @@ Section Cross References
     rt_errno_addr_intlibspace.o(.text) refers to libspace.o(.bss) for __libspace_start
     libspace.o(.text) refers to libspace.o(.bss) for __libspace_start
     sys_stackheap_outer.o(.text) refers to libspace.o(.text) for __user_perproc_libspace
-    sys_stackheap_outer.o(.text) refers to sys_stackheap.o(.text) for __user_initial_stackheap
+    sys_stackheap_outer.o(.text) refers to startup_stm32l476xx.o(.text) for __user_initial_stackheap
     exit.o(.text) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for __rt_exit
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000030) for __rt_lib_init_alloca_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002E) for __rt_lib_init_argv_1
@@ -85,10 +94,6 @@ Section Cross References
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001F) for __rt_lib_init_signal_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000027) for __rt_lib_init_stdio_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000E) for __rt_lib_init_user_alloc_1
-    sys_stackheap.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
-    sys_stackheap.o(.text) refers to use_no_semi.o(.text) for __I$use$semihosting
-    sys_stackheap_hlt.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
-    sys_stackheap_hlt.o(.text) refers to use_no_semi.o(.text) for __I$use$semihosting
     rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
     rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
     rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
@@ -151,3 +156,28 @@ Section Cross References
     defsig_segv_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
     defsig_other.o(.text) refers to defsig_general.o(.text) for __default_signal_display
 
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing display.o(.text), (0 bytes).
+    Removing display.o(.ARM.exidx.text.init_display), (8 bytes).
+    Removing display.o(.ARM.exidx.text.display_voltage), (8 bytes).
+    Removing generator.o(.text), (0 bytes).
+    Removing generator.o(.text.generator_startup_sequence), (126 bytes).
+    Removing generator.o(.ARM.exidx.text.generator_startup_sequence), (8 bytes).
+    Removing generator.o(.text.generator_stop), (30 bytes).
+    Removing generator.o(.ARM.exidx.text.generator_stop), (8 bytes).
+    Removing generator.o(.data.GEN_PORT), (4 bytes).
+    Removing generator.o(.data.GEN_CHOKE_PIN), (2 bytes).
+    Removing generator.o(.data.GEN_START_PIN), (2 bytes).
+    Removing generator.o(.data.GEN_RUN_PIN), (2 bytes).
+    Removing main.o(.text), (0 bytes).
+    Removing main.o(.ARM.exidx.text.SystemClock_Config), (8 bytes).
+    Removing main.o(.ARM.exidx.text.main), (8 bytes).
+    Removing main.o(.ARM.use_no_argv), (4 bytes).
+    Removing voltagemonitoring.o(.text), (0 bytes).
+    Removing voltagemonitoring.o(.ARM.exidx.text.voltage_monitor_read_rms), (8 bytes).
+
+18 unused section(s) (total 226 bytes) removed from the image.

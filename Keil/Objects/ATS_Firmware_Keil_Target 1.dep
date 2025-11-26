@@ -1,7 +1,7 @@
 Dependencies for Project 'ATS_Firmware_Keil', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6210000::V6.21::ARMCLANG
 F (.\Src\Display.c)(0x69263ECD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./Inc -I ./Drivers/STM32L4xx_HAL_Driver/Inc -I ./Drivers/CMSIS/Include-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="539" -DSTM32L476xx-o ./objects/display.o -MD)
-I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692642AE)
+I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692643C1)
 I (Inc\stm32l4xx_hal_conf.h)(0x692537EA)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_def.h)(0x6924FA0B)
@@ -37,7 +37,7 @@ I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_pwr_ex.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart_ex.h)(0x6924FA0B)
 F (.\Src\generator.c)(0x69263F00)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./Inc -I ./Drivers/STM32L4xx_HAL_Driver/Inc -I ./Drivers/CMSIS/Include-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="539" -DSTM32L476xx-o ./objects/generator.o -MD)
-I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692642AE)
+I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692643C1)
 I (Inc\stm32l4xx_hal_conf.h)(0x692537EA)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_def.h)(0x6924FA0B)
@@ -72,8 +72,8 @@ I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_pwr.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_pwr_ex.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart_ex.hfnc\main.h)(0x00000000)
-F (.\Src\main.c)(0x69263F12)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./Inc -I ./Drivers/STM32L4xx_HAL_Driver/Inc -I ./Drivers/CMSIS/Include-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="539" -DSTM32L476xx-o ./objects/main.o -MD)
-I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692642AE)
+F (.\Src\main.c)(0x692648C4)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./Inc -I ./Drivers/STM32L4xx_HAL_Driver/Inc -I ./Drivers/CMSIS/Include-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="539" -DSTM32L476xx-o ./objects/main.o -MD)
+I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692643C1)
 I (Inc\stm32l4xx_hal_conf.h)(0x692537EA)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_def.h)(0x6924FA0B)
@@ -111,7 +111,7 @@ I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart_ex.hfnc\display.h)(0x0000
 I (Inc\voltageMonitoring.hrnc\generator.h)(0x00000000)
 F (.\Src\VoltageMonitoring.c)(0x69263EE5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./Inc -I ./Drivers/STM32L4xx_HAL_Driver/Inc -I ./Drivers/CMSIS/Include-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="539" -DSTM32L476xx-o ./objects/voltagemonitoring.o -MD)
 I (Inc\voltageMonitoring.h)(0x69263EDC)
-I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692642AE)
+I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h)(0x692643C1)
 I (Inc\stm32l4xx_hal_conf.h)(0x692537EA)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h)(0x6924FA0B)
 I (Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_def.h)(0x6924FA0B)
@@ -151,3 +151,4 @@ F (.\Inc\Display.h)(0x69263EBD)()
 F (.\Inc\generator.h)(0x69263EF7)()
 F (.\Inc\main.h)(0x69263EAA)()
 F (.\Inc\VoltageMonitoring.h)(0x69263EDC)()
+F (.\startup_stm32l476xx.s)(0x65B2BE61)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-IC:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 539" -Wa,armasm,--pd,"STM32L476xx SETA 1"-o ./objects/startup_stm32l476xx.o)

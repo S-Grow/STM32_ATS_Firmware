@@ -424,6 +424,11 @@
               <FileType>5</FileType>
               <FilePath>.\Inc\VoltageMonitoring.h</FilePath>
             </File>
+            <File>
+              <FileName>startup_stm32l476xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\startup_stm32l476xx.s</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
