@@ -1,10 +1,9 @@
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#ifndef __GENERATOR_H
+#define __GENERATOR_H
 
-#include "main.h"
+#include "stm32l4xx_hal.h"
 
-// Functions to control generator
-void generator_startup_sequence(void); // Full startup sequence
-void generator_stop(void);             // Stop generator immediately
+void generator_startup_sequence(void);
+void generator_stop(void);
 
 #endif

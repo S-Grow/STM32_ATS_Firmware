@@ -1,42 +1,25 @@
 #include "generator.h"
-#include <stdio.h>
-#include "stm32l4xx_hal.h"
+#include "main.h"
 
-//Pin assignments
-GPIO_TypeDef* GEN_PORT = GPIOA;      // GPIO port for generator pins
-uint16_t GEN_CHOKE_PIN = GPIO_PIN_4; // Choke control
-uint16_t GEN_START_PIN = GPIO_PIN_3; // Start control
-uint16_t GEN_RUN_PIN   = GPIO_PIN_5; // Run signal
+GPIO_TypeDef* GEN_PORT = GPIOA;
+uint16_t GEN_CHOKE_PIN = GPIO_PIN_4;
+uint16_t GEN_START_PIN = GPIO_PIN_3;
+uint16_t GEN_RUN_PIN = GPIO_PIN_5;
 
-//Delay variables
-#define CHOKE_DELAY    2000  // Choke duration in ms
-#define START_DELAY    4000  // Start/crank duration in ms
-#define RUN_DELAY      1000  // Stabilization before SSR
+void generator_startup_sequence(void)
+{
+    HAL_GPIO_WritePin(GEN_PORT, GEN_CHOKE_PIN, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(GEN_PORT, GEN_CHOKE_PIN, GPIO_PIN_RESET);
 
-//Functions
-void generator_startup_sequence(void){
+    HAL_GPIO_WritePin(GEN_PORT, GEN_START_PIN, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(GEN_PORT, GEN_START_PIN, GPIO_PIN_RESET);
 
-    //Choke Sim
-
-    //turn on choke indicator LED light
-    HAL_Delay(CHOKE_DELAY);
-    
-    //Startup Sim
-
-    //turn off choke indicator
-    HAL_Delay(START_DELAY);
-
-    //Running
-
-    //turn on running light
-    HAL_Delay(RUN_DELAY);
-    
-
-
+    HAL_GPIO_WritePin(GEN_PORT, GEN_RUN_PIN, GPIO_PIN_SET);
 }
 
-void generator_stop(void){
-
-    //stop indicator LED
-
+void generator_stop(void)
+{
+    HAL_GPIO_WritePin(GEN_PORT, GEN_RUN_PIN, GPIO_PIN_RESET);
 }

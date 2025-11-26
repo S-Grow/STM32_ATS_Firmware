@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6210000::V6.21::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -194,7 +195,7 @@
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
             <RoSelD>3</RoSelD>
-            <RwSelD>4</RwSelD>
+            <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
             <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
@@ -259,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -279,7 +280,7 @@
                 <Size>0x100000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -339,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\Inc;.\Drivers\STM32L4xx_HAL_Driver\Inc;.\Drivers\CMSIS\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -382,6 +383,48 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+          <Files>
+            <File>
+              <FileName>Display.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\Display.c</FilePath>
+            </File>
+            <File>
+              <FileName>generator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\generator.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageMonitoring.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\VoltageMonitoring.c</FilePath>
+            </File>
+            <File>
+              <FileName>Display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\Display.h</FilePath>
+            </File>
+            <File>
+              <FileName>generator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\generator.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageMonitoring.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inc\VoltageMonitoring.h</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>

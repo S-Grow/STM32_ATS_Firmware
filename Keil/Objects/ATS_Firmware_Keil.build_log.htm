@@ -1,0 +1,305 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Spencer Grow, The University of Maine, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\sjron\OneDrive\Documents\GitHub\STM32_ATS_Firmware\Keil\ATS_Firmware_Keil.uvprojx
+Project File Date:  11/25/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+Src/generator.c(1): warning: In file included from...
+./Inc\generator.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e.
+      |                                                ^
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers
+      |                                                                     ^
+Src/generator.c(1): warning: In file included from...
+./Inc\generator.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(150): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h(10): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   10 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+Src/generator.c(4): warning: no previous extern declaration for non-static variable 'GEN_PORT' [-Wmissing-variable-declarations]
+    4 | GPIO_TypeDef* GEN_PORT = GPIOA;
+      |               ^
+Src/generator.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    4 | GPIO_TypeDef* GEN_PORT = GPIOA;
+      | ^
+Src/generator.c(5): warning: no previous extern declaration for non-static variable 'GEN_CHOKE_PIN' [-Wmissing-variable-declarations]
+    5 | uint16_t GEN_CHOKE_PIN = GPIO_PIN_4;
+      |          ^
+Src/generator.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    5 | uint16_t GEN_CHOKE_PIN = GPIO_PIN_4;
+      | ^
+Src/generator.c(6): warning: no previous extern declaration for non-static variable 'GEN_START_PIN' [-Wmissing-variable-declarations]
+    6 | uint16_t GEN_START_PIN = GPIO_PIN_3;
+      |          ^
+Src/generator.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    6 | uint16_t GEN_START_PIN = GPIO_PIN_3;
+      | ^
+Src/generator.c(7): warning: no previous extern declaration for non-static variable 'GEN_RUN_PIN' [-Wmissing-variable-declarations]
+    7 | uint16_t GEN_RUN_PIN = GPIO_PIN_5;
+      |          ^
+Src/generator.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    7 | uint16_t GEN_RUN_PIN = GPIO_PIN_5;
+      | ^
+7 warnings generated.
+compiling generator.c...
+Src/Display.c(1): warning: non-portable path to file '"Display.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+    1 | #include "display.h"
+      |          ^~~~~~~~~~~
+      |          "Display.h"
+Src/Display.c(1): warning: In file included from...
+./Inc\display.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e.
+      |                                                ^
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers
+      |                                                                     ^
+Src/Display.c(1): warning: In file included from...
+./Inc\display.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(150): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h(10): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   10 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+Src/Display.c(1): warning: In file included from...
+./Inc\display.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(342): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_i2c.h(215): warning: padding struct 'struct __I2C_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  215 |   __IO uint32_t              ErrorCode;      /*!< I2C Error code                            */
+      |                              ^
+Src/Display.c(17): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   17 |     uint8_t cmd = 0x21;
+      |             ^
+Src/Display.c(40): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   40 |     int val = (int)voltage;
+      |         ^
+Src/Display.c(24): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   24 |     for(int i=0;i<16;i++) buffer[i]=0;
+      |                           ^~~~~~
+Src/Display.c(32): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   32 |     for(int i=0;i<16;i++) buffer[i]=0;
+      |                           ^~~~~~
+Src/Display.c(36): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   36 |         buffer[0]=SEG_E; buffer[2]=SEG_r; buffer[4]=SEG_r;
+      |                          ^~~~~~
+Src/Display.c(36): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   36 |         buffer[0]=SEG_E; buffer[2]=SEG_r; buffer[4]=SEG_r;
+      |                                           ^~~~~~
+Src/Display.c(44): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   44 |     if(d1>=0) buffer[0]=digits[d1];
+      |                         ^~~~~~
+Src/Display.c(45): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   45 |     if(d2>=0) buffer[2]=digits[d2];
+      |               ^~~~~~
+Src/Display.c(45): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   45 |     if(d2>=0) buffer[2]=digits[d2];
+      |                         ^~~~~~
+Src/Display.c(46): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   46 |     buffer[4]=digits[d3];
+      |     ^~~~~~
+Src/Display.c(46): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   46 |     buffer[4]=digits[d3];
+      |               ^~~~~~
+16 warnings generated.
+compiling Display.c...
+Src/VoltageMonitoring.c(1): warning: non-portable path to file '"VoltageMonitoring.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+    1 | #include "voltageMonitoring.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+      |          "VoltageMonitoring.h"
+Src/VoltageMonitoring.c(1): warning: In file included from...
+./Inc\voltageMonitoring.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e.
+      |                                                ^
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers
+      |                                                                     ^
+Src/VoltageMonitoring.c(1): warning: In file included from...
+./Inc\voltageMonitoring.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(150): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h(10): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   10 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+Src/VoltageMonitoring.c(1): warning: In file included from...
+./Inc\voltageMonitoring.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(278): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(158): warning: padding struct 'ADC_InitTypeDef' with 2 bytes to align 'NbrOfConversion' [-Wpadded]
+  158 |   uint32_t NbrOfConversion;       /*!< Specify the number of ranks that will be converted within the regular group
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(187): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'NbrOfDiscConversion' [-Wpadded]
+  187 |   uint32_t NbrOfDiscConversion;   /*!< Specifies the number of discontinuous conversions in which the main sequence
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(211): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'Overrun' [-Wpadded]
+  211 |   uint32_t Overrun;               /*!< Select the behavior in case of overrun: data overwritten or preserved (default).
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(232): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'Oversampling' [-Wpadded]
+  232 |   ADC_OversamplingTypeDef Oversampling;   /*!< Specify the Oversampling parameters.
+      |                           ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(467): warning: padding struct 'ADC_HandleTypeDef' with 3 bytes to align 'State' [-Wpadded]
+  467 |   __IO uint32_t                 State;                         /*!< ADC communication state (bitmap of ADC states) */
+      |                                 ^
+Src/VoltageMonitoring.c(18): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+   18 |         uint16_t val = HAL_ADC_GetValue(&hadc1);
+      |                  ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~
+Src/VoltageMonitoring.c(22): warning: implicit conversion turns floating-point number into integer: 'float' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+   22 |         sum_sq += centered*centered;
+      |         ~~~~~~~^~~~~~~~~~~~~~~~~~~~
+Src/VoltageMonitoring.c(18): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   18 |         uint16_t val = HAL_ADC_GetValue(&hadc1);
+      |                  ^
+Src/VoltageMonitoring.c(25): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   25 |     float rms = sqrtf((float)sum_sq/NUM_SAMPLES);
+      |           ^
+13 warnings generated.
+compiling VoltageMonitoring.c...
+Src/main.c(1): warning: In file included from...
+./Inc\main.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e.
+      |                                                ^
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers
+      |                                                                     ^
+Src/main.c(1): warning: In file included from...
+./Inc\main.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(258): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_rcc.h(27): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h(29): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include\stm32l4xx.h(150): warning: In file included from...
+C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h(10): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   10 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+Src/main.c(2): warning: non-portable path to file '"Display.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+    2 | #include "display.h"
+      |          ^~~~~~~~~~~
+      |          "Display.h"
+Src/main.c(3): warning: non-portable path to file '"VoltageMonitoring.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+    3 | #include "voltageMonitoring.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+      |          "VoltageMonitoring.h"
+Src/main.c(1): warning: In file included from...
+./Inc\main.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(342): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_i2c.h(215): warning: padding struct 'struct __I2C_HandleTypeDef' with 1 byte to align 'ErrorCode' [-Wpadded]
+  215 |   __IO uint32_t              ErrorCode;      /*!< I2C Error code                            */
+      |                              ^
+Src/main.c(1): warning: In file included from...
+./Inc\main.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(278): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(158): warning: padding struct 'ADC_InitTypeDef' with 2 bytes to align 'NbrOfConversion' [-Wpadded]
+  158 |   uint32_t NbrOfConversion;       /*!< Specify the number of ranks that will be converted within the regular group
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(187): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'NbrOfDiscConversion' [-Wpadded]
+  187 |   uint32_t NbrOfDiscConversion;   /*!< Specifies the number of discontinuous conversions in which the main sequence
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(211): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'Overrun' [-Wpadded]
+  211 |   uint32_t Overrun;               /*!< Select the behavior in case of overrun: data overwritten or preserved (default).
+      |            ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(232): warning: padding struct 'ADC_InitTypeDef' with 3 bytes to align 'Oversampling' [-Wpadded]
+  232 |   ADC_OversamplingTypeDef Oversampling;   /*!< Specify the Oversampling parameters.
+      |                           ^
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_adc.h(467): warning: padding struct 'ADC_HandleTypeDef' with 3 bytes to align 'State' [-Wpadded]
+  467 |   __IO uint32_t                 State;                         /*!< ADC communication state (bitmap of ADC states) */
+      |                                 ^
+Src/main.c(68): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   68 |         float v = voltage_monitor_read_rms();
+      |               ^
+Src/main.c(36): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   36 |     GPIO_InitTypeDef gpio={0};
+      |                      ^
+Src/main.c(1): warning: In file included from...
+./Inc\main.h(4): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal.h(29): warning: In file included from...
+./Inc\stm32l4xx_hal_conf.h(266): warning: In file included from...
+./Drivers/STM32L4xx_HAL_Driver/Inc\stm32l4xx_hal_dma.h(122): warning: padding struct 'struct __DMA_HandleTypeDef' with 2 bytes to align 'Parent' [-Wpadded]
+  122 |   void                  *Parent;                                                        /*!< Parent object state                  */
+      |                          ^
+Src/main.c(7): warning: no previous extern declaration for non-static variable 'hadc1' [-Wmissing-variable-declarations]
+    7 | ADC_HandleTypeDef hadc1;
+      |                   ^
+Src/main.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+    7 | ADC_HandleTypeDef hadc1;
+      | ^
+15 warnings generated.
+compiling main.c...
+linking...
+.\Objects\ATS_Firmware_Keil.axf: Error: L6320W: Ignoring --entry command. Cannot find argument 'Reset_Handler'.
+.\Objects\ATS_Firmware_Keil.axf: Warning: L6320W: Ignoring --first command. Cannot find argument '__Vectors'.
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 1 warning and 1 error messages.
+".\Objects\ATS_Firmware_Keil.axf" - 1 Error(s), 52 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.2.pack
+                Keil::STM32L4xx_DFP@2.6.2
+                STMicroelectronics STM32L4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  C:/Users/sjron/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.2/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

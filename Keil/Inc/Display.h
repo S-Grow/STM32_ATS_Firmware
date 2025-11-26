@@ -1,10 +1,10 @@
-// display.h - Header for HT16K33 4-digit 7-segment display
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#ifndef __DISPLAY_H
+#define __DISPLAY_H
+
+#include "stm32l4xx_hal.h"
 
 int init_display(void);
 int display_voltage(float voltage);
 int shutdown_display(void);
-void test_display(void);
 
-#endif
+#endif /* __DISPLAY_H */
