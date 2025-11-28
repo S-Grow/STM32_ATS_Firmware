@@ -1,40 +1,43 @@
-#ifndef MAIN_H
-#define MAIN_H
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.h
+  * @brief          : Header for main.c
+  *                   This file contains the common defines of the application
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
-#include "stm32l476xx.h"
-#include "SysClock.h"
+#ifndef __MAIN_H
+#define __MAIN_H
 
-/* -------- GPIO Pin Definitions -------- */
-// On-board LED and button
-#define LED_PIN      5
-#define LED_PORT     GPIOA
-#define BUTTON_PIN   13
-#define BUTTON_PORT  GPIOC
+#include "stm32l4xx_hal.h"
 
-// Generator pins (example)
-#define GEN_CHOKE_PIN  4
-#define GEN_START_PIN  3
-#define GEN_RUN_PIN    5
-#define GEN_PORT       GPIOA
+// CubeMX-generated peripheral handles
+extern I2C_HandleTypeDef hi2c1;
+extern ADC_HandleTypeDef hadc1;
 
-// Any extra LEDs/indicators can go here
-// #define INDICATOR_PIN  X
-// #define INDICATOR_PORT GPIOB
+// LED and button pins from CubeMX
+#define LED_PIN         LD2_Pin
+#define LED_GPIO_PORT   LD2_GPIO_Port
+#define BUTTON_PIN      B1_Pin
+#define BUTTON_GPIO_PORT B1_GPIO_Port
 
-/* -------- I2C Definitions -------- */
-#define I2C_INSTANCE      I2C1
-#define I2C_SCL_PIN       8
-#define I2C_SDA_PIN       9
-#define I2C_GPIO_PORT     GPIOB
-#define HT16K33_ADDR      (0x70 << 1)   // 7-bit address shifted for HAL
+// Display I2C address
+#define HT16K33_ADDR 0x70 << 1   // 7-bit address shifted left for HAL
 
-/* -------- ADC Definitions -------- */
-#define ADC_INSTANCE      ADC1
-#define ADC_CHANNEL       ADC_CHANNEL_5   // Example
-#define ADC_GPIO_PIN      GPIO_PIN_0
-#define ADC_GPIO_PORT     GPIOA
+// Delay for blinking LED
+#define LED_BLINK_DELAY 500000
 
-/* -------- Delays / Demo Values -------- */
-#define LED_BLINK_DELAY   500000  // Simple software delay
+// Function prototypes
+void SystemClock_Config(void);
+void Error_Handler(void);
+void MX_GPIO_Init(void);
+void MX_I2C1_Init(void);
+void MX_ADC1_Init(void);
 
-#endif /* MAIN_H */
+// Display functions
+int init_display(void);
+int test_display(void);
+
+#endif /* __MAIN_H */
